@@ -44,6 +44,18 @@ Product.init(
     }
   },
   {
+    hooks: {
+      beforeCreate: async (newProductData)=>{
+        const newLowerCasedProductName = await newProductData.product_name.toLowerCase();
+        newProductData.product_name = newLowerCasedProductName;
+        return newProductData;
+      },
+      beforeUpdate: async (updatedProductData)=>{
+        const updatedLowerCasedProductName = await updatedProductData.product_name.toLowerCase();
+        updatedProductData.product_name = updatedLowerCasedProductName;
+        return updatedProductData;
+      }
+    },
     sequelize,
     timestamps: false,
     freezeTableName: true,

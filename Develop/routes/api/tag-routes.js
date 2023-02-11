@@ -57,7 +57,7 @@ router.post('/', async (req, res) => {
     await Tag.create(req.body);
 
     // sends success message back 
-    res.status(200).json({message:`New Tag Created: ${req.body.tag_name}`});
+    res.status(200).json({message:`New Tag Created: ${req.body.tag_name.toLowerCase()}`});
 
   // catches and returns error   
   } catch(err) {
@@ -79,10 +79,11 @@ router.put('/:id', async (req, res) => {
     await Tag.update(req.body,{
       where:{
         id: req.params.id
-      }
+      },
+      individualHooks:true
     });
     // sends back success message
-    res.status(200).json({message:`Tag Updated to: ${req.body.tag_name}`});
+    res.status(200).json({message:`Tag Updated to: ${req.body.tag_name.toLowerCase()}`});
 
   // catches and returns error
   } catch(err) {

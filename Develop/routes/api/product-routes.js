@@ -59,7 +59,7 @@ router.post('/', (req, res) => {
       price: 200.00,
       stock: 3,
       category_id: [6],
-      tagIds: [1, 2, 3, 4]
+      tagIds: [1, 2, 3, 4] 
     }
   */
   Product.create(req.body)
@@ -91,6 +91,7 @@ router.put('/:id', (req, res) => {
     where: {
       id: req.params.id,
     },
+    individualHooks:true
   })
     .then((product) => {
       // find all associated tags from ProductTag

@@ -17,7 +17,19 @@ Tag.init(
       unique: true
     },
   },
-  {
+  { 
+    hooks: {
+      beforeCreate: async (newTagData)=>{
+        const newLowerCasedTag = await newTagData.tag_name.toLowerCase();
+        newTagData.tag_name = newLowerCasedTag;
+        return newTagData;
+      },
+      beforeUpdate: async (updatedTagData)=>{
+        const updatedLowerCasedTag = await updatedTagData.tag_name.toLowerCase();
+        updatedTagData.tag_name = updatedLowerCasedTag;
+        return updatedTagData;
+      }
+    },
     sequelize,
     timestamps: false,
     freezeTableName: true,
