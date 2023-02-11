@@ -19,6 +19,18 @@ Category.init(
     }
   },
   {
+    hooks: {
+      beforeCreate: async (newCategory)=>{
+        const lowerCasedNewCategory = await newCategory.dataValues.category_name.toLowerCase();
+        newCategory.dataValues.category_name = lowerCasedNewCategory;
+        return newCategory;
+      },
+      beforeUpdate: async (updatedCategory)=>{
+        const lowerCasedUpdatedCategory = await updatedCategory.dataValues.category_name.toLowerCase();
+        updatedCategory.dataValues.category_name = lowerCasedUpdatedCategory;
+        return updatedCategory;
+      }
+    },
     sequelize,
     timestamps: false,
     freezeTableName: true,

@@ -57,7 +57,7 @@ router.post('/', async (req, res) => {
     await Category.create(req.body);
 
     // sends success message back 
-    res.status(200).json({message:`New Category Created: ${req.body.category_name}`});
+    res.status(200).json({message:`New Category Created: ${req.body.category_name.toLowerCase()}`});
 
   // catches and returns error  
   } catch(err) {
@@ -67,8 +67,7 @@ router.post('/', async (req, res) => {
 });
 
 router.put('/:id', async (req, res) => {
-  // update a category by its `id` value
-
+  
   // try-catch statement to update category by id
   try {
 
@@ -85,11 +84,12 @@ router.put('/:id', async (req, res) => {
     await Category.update(req.body,{
       where: {
         id: req.params.id
-      }
+      },
+      individualHooks:true
     });
 
     // sends success messages back
-    res.status(200).json({message:`Category Updated to: ${req.body.category_name}`});
+    res.status(200).json({message:`Category Updated to: ${req.body.category_name.toLowerCase()}`});
 
 
   // catches and returns error
