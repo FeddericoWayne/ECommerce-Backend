@@ -19,6 +19,17 @@ Category.init(
     }
   },
   {
+    /*hooks: {
+      beforeCreate:(newCategoryName) =>{
+        const array = newCategoryName.category_name.split(" ");
+        let formattedArray = [];
+        for (element of array) {
+          let upperCasedWord = element[0].toUpperCase() + element.substring(1).toLowerCase();
+          formattedArray.push(upperCasedWord);
+        }
+        return formattedArray.toString().replaceAll(","," ");
+      }
+    },*/
     sequelize,
     timestamps: false,
     freezeTableName: true,
