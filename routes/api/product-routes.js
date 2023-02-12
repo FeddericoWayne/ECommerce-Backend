@@ -55,11 +55,11 @@ router.get('/:id', async (req, res) => {
 router.post('/', (req, res) => {
   /* req.body should look like this...
     {
-      product_name: "Basketball",
-      price: 200.00,
-      stock: 3,
-      category_id: [6],
-      tagIds: [1, 2, 3, 4] 
+      "product_name": "Basketball",
+      "price": 200.00,
+      "stock": 3,
+      "category_id": [6],
+      "tagIds": [1, 2, 3, 4] 
     }
   */
   Product.create(req.body)
@@ -75,9 +75,9 @@ router.post('/', (req, res) => {
         return ProductTag.bulkCreate(productTagIdArr);
       }
       // if no product tags, just respond
-      res.status(200).json(product);
+      res.status(200).json({message: `Product Created: ${req.body.product_name.toLowerCase()}, Price: ${req.body.price}, Stock: ${req.body.stock}, Category_id: ${req.body.category_id}`});
     })
-    .then((productTagIds) => res.status(200).json(productTagIds))
+    .then(() => res.status(200).json({message: `Product Created: ${req.body.product_name.toLowerCase()}, Price: ${req.body.price}, Stock: ${req.body.stock}, Category_id: ${req.body.category_id}, Tag ID's: ${req.body.tagIds}`}))
     .catch((err) => {
       console.log(err);
       res.status(400).json(err);
@@ -120,9 +120,9 @@ router.put('/:id', (req, res) => {
         ProductTag.bulkCreate(newProductTags),
       ]);
     })
-    .then((updatedProductTags) => res.json(updatedProductTags))
+    .then((updatedProductTags) => res.status(200).json(updatedProductTags))
     .catch((err) => {
-      // console.log(err);
+
       res.status(400).json(err);
     });
 });
