@@ -23,8 +23,8 @@
 
   If any any point, an id is passed in a request and that id is not found in the database, the user will be alerted accordingly. If there is no data left in the database for categories, products, or tags, the user will alerted accoringly. If the data the user is trying to create already exists in the database, the user will be alerted accordingly. 
 
-  Click <a href="" target="_blank">HERE</a> for the video that demonstrates the functionality of this App. 
-  (URL: )
+  Click <a href="https://app.castify.com/view/e3498eaa-4841-4aaf-8989-ed158f801c21" target="_blank">HERE</a> for the video that demonstrates the functionality of this App. 
+  (URL: https://app.castify.com/view/e3498eaa-4841-4aaf-8989-ed158f801c21)
 
   The URL of the Github repo is: https://github.com/FeddericoWayne/ECommerce-Backend
 
